@@ -1,0 +1,17 @@
+@use "../setting/color" as c;
+@use "../setting/config" as con;
+/*===============================================
+rooms
+===============================================*/
+.subPage-top {
+  &.-rooms {
+    background: url(../img/oheya-header@2x.png) no-repeat center center /cover;
+  }
+}
+
+.subPage-alternate__note {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  margin-top: 39px;
+  margin-left: 3px;
+}

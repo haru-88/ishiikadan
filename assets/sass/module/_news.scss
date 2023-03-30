@@ -1,0 +1,90 @@
+@use "../setting/color" as c;
+@use "../setting/config" as con;
+
+/*===============================================
+news
+===============================================*/
+.news {
+  padding: 58px 0 61px; 
+
+  &-tab {
+    margin-top: 44px;
+    display: flex;
+    justify-content: center;
+
+    &__item {
+      font-size: 1.6rem;
+      cursor: pointer;
+
+      & + & {
+        margin-left: 53px;
+      }
+
+      span {
+        &._active {
+          border-bottom: 1px solid c.$color-border-base;
+        }
+      }
+    }
+  }
+
+  &__list {
+    display: none;
+    margin-top: 30px;
+
+    &._active {
+      display: block;
+    }
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+
+    @include con.mq('tab') {
+      flex-direction: row;
+      justify-content: space-between;
+      flex-wrap: wrap;
+    }
+  }
+
+  &-card {
+    background-color: c.$color-bg-card;
+    margin-top: 21px;
+    
+    @include con.mq('tab') {
+      width: calc((100% - 40px) / 2); 
+    }
+    
+    &__link {
+      display: flex;
+      padding: 15px 14px 13px 10px;
+    }
+
+    &__thumb {
+      margin-right: 29px;
+      width: 103px;
+      height: 100px;
+      flex-shrink: 0;
+
+      img {
+        height: 100%;
+      }
+    }
+
+    &__body {
+      flex-grow: 1;
+    }
+
+    &__date {
+      font-size: 1.4rem;
+      letter-spacing: -0.1em;
+    }
+
+    &__title {
+      font-size: 1.6rem;
+      margin-top: 3px;
+      line-height: 2;
+    }
+  }
+}

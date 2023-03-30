@@ -1,0 +1,83 @@
+@use "../setting/color" as c;
+@use "../setting/config" as con;
+
+/*===============================================
+recommend
+===============================================*/
+.recommend {
+  background: url(../img/bg02@2x.png) no-repeat center center/cover;
+  padding-top: 58px;
+  padding-bottom: 80px;
+
+  @include con.mq('tab') {
+    padding-bottom: 134px;
+  }
+  
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-top: 64px;
+
+    @include con.mq('tab') {
+      flex-direction: row;
+    }
+  }
+  &-card {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+
+    &:hover {
+      opacity: .6;
+    }
+
+    @include con.mq('tab-down') {
+      & + & {
+        margin-top: 56px;
+      }
+    }
+    @include con.mq('tab') {
+      width: calc(33.3% - 94px * 2 / 3);
+      & + & {
+        margin-left: 94px;
+      }
+    }
+
+    &__body {
+      padding-top: 29px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    &__title {
+      font-size: 2rem;
+      line-height: 1.6;
+    }
+
+    &__text {
+      font-size: 1.6rem;
+      line-height: 2;
+      margin-top: 16px;
+
+      @include con.mq('tab') {
+        margin-top: 21px;
+      }
+    }
+
+    &__thumb {
+
+      img {
+        aspect-ratio: 331 / 209;
+      }
+    }
+
+    &__link {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+    }
+  }
+}

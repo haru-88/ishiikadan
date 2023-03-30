@@ -1,0 +1,18 @@
+
+//ブレイクポイント
+$breakpoints: (
+	"sp-up": "(min-width: 567px)",
+	"tab-down": "(max-width: 767px)",
+  "tab": "(min-width: 768px)",
+	"pc-down": "(max-width: 991px)",
+	"pc": "(min-width: 992px)",
+	"pc-up": "(min-width: 1400px)",
+
+) !default;
+
+// メディアクエリー
+@mixin mq($breakpoint: sp) {
+	@media screen and #{map-get($breakpoints, $breakpoint)} {
+		@content;
+	}
+}

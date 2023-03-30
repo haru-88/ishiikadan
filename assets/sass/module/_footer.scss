@@ -1,0 +1,68 @@
+@use "../setting/color" as c;
+@use "../setting/config" as con;
+
+/*===============================================
+footer
+===============================================*/
+.footer {
+  background-image: url(../img/bg3@2x.png);
+
+  &-inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 63px 0 48px;
+  }
+
+  &__logo {
+    max-width: 145px;
+    margin-top: 77px;
+    
+    a {
+      display: block;
+    }
+  }
+
+  &__nav {
+    order: -1;
+    writing-mode: vertical-rl;
+  }
+  &__list {
+    letter-spacing: 1.6em;
+    
+  }
+  &__item {
+    & + & {
+      margin-right: 34px;
+    }
+  }
+
+  &__link {
+    font-size: 1.8rem;
+  }
+
+  &__address {
+    font-size: 1.6rem;
+    line-height: 2.5;
+    margin-top: 60px;
+    letter-spacing: -0.07em;
+    padding-left: 7px;
+    text-align: center;
+
+    span {
+      margin-left: 21px;
+    }
+
+    span:first-child {
+      letter-spacing: 0.12em;
+    }
+  }
+
+  &__copyright {
+    background-color: c.$color-bg-footer;
+    color: c.$color-font-sub;
+    font-size: 1.2rem;
+    text-align: center;
+    padding: 23px 0;
+  }
+}

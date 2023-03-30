@@ -1,0 +1,70 @@
+@use "../setting/color" as c;
+@use "../setting/config" as con;
+
+/*===============================================
+message
+===============================================*/
+.message {
+  background-image: url(../img/bg@2x.png);
+
+  &__contents {
+    padding-top: 128px;
+    padding-bottom: 97px;
+    padding-left: min(5.73vw, 111px);
+    padding-right: 15px;
+
+    @include con.mq('tab') {
+      padding-top: 150px;
+      writing-mode: vertical-rl;
+      text-orientation: upright;
+      margin: 0 auto;
+
+      @-moz-document url-prefix() {
+        padding-left: 7vw;
+      }
+    }
+
+    @include con.mq('pc') {
+      padding-left: min(14vw, 180px);
+    }
+  }
+
+  &__title {
+    font-size: 2.8rem;
+    line-height: 2;
+    letter-spacing: 0.5em;
+
+    @include con.mq('tab') {
+      text-indent: -3em;
+    }
+  }
+
+  &__text {
+    font-size: 1.6rem;
+    line-height: 2.3;
+    letter-spacing: 0.36em;
+
+    @include con.mq('tab-down') {
+      margin-top: 30px;
+    }
+  
+    @include con.mq('tab') {
+      margin-right: clamp(50px, 5.104vw, 98px);
+    }
+  }
+
+  &__signature {
+    font-size: 2.2rem;
+    letter-spacing: .45em;
+    text-align: end;
+
+    @include con.mq('tab-down') {
+      margin-top: 40px;
+    }
+  
+    @include con.mq('tab') {
+      margin-right: clamp(60px, 5.78vw, 111px);
+      margin-bottom: 14px;
+    }
+  }
+}

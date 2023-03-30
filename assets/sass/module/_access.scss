@@ -1,0 +1,80 @@
+@use "../setting/color" as c;
+@use "../setting/config" as con;
+
+/*===============================================
+access
+===============================================*/
+.access {
+  background: url(../img/bg@2x.png);
+  padding-top: 58px;
+  padding-bottom: 72px;
+
+  @include con.mq('tab') {
+    padding-bottom: 110px;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column-reverse;
+    margin-top: 48px;
+
+    @include con.mq('tab') {
+      flex-direction: row-reverse;
+      margin-top: 84px;
+    }
+  }
+
+  &__body {
+    font-size: 1.6rem;
+    line-height: 2;
+    
+    @include con.mq('tab') {
+      width: 44.4%;
+      padding-left: 32px;
+    }
+    @include con.mq('pc-up') {
+      padding-left: 83px;
+    }
+  }
+
+  &__info {
+
+    dt { 
+      font-weight: 800;
+      margin-top: 10px;
+    }
+    dd {
+      margin-top: 8px;
+      letter-spacing: -0.05em;
+    }
+  }
+
+  &__lead {
+    margin-top: 5px;
+  }
+
+  &__img {
+
+    @include con.mq('tab') {
+      width: 55.6%;
+      aspect-ratio: 656 / 370;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+  }
+
+  &__map {
+    margin: 66px auto 0;
+    max-width: 792px;
+    aspect-ratio: 792 / 592;
+    
+    iframe {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}

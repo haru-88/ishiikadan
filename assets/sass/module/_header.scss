@@ -1,0 +1,235 @@
+@use "../setting/color" as c;
+@use "../setting/config" as con;
+
+/*===============================================
+header
+===============================================*/
+.header {
+  width: 100%;
+  height: 80px;
+  background: c.$color-bg-base;
+
+  &.-top {
+    background: transparent;
+    display: none;
+  }
+
+  &.-subPage {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+  }
+
+  &._fixed {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    display: block;
+  }
+
+  &-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 100%;
+    padding: 0 20px;
+  }
+
+  &__logo {
+    a {
+      display: block;
+    }
+
+    img {
+
+      @include con.mq('pc-down') {
+        width: 150px;
+      }
+
+      @include con.mq('pc') {
+        width: 200px;
+      }
+    }
+  }
+
+  //ナビ
+  &__nav {
+    visibility: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    
+    ._open & {
+      visibility: visible;
+      left: 0;
+    }
+
+    @include con.mq('pc-down') {
+      background: c.$color-bg-base;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: -500px;
+      width: 500px;
+      z-index: 98;
+      transition: left .3s linear;
+    }
+
+    @include con.mq('tab-down') {
+      background: c.$color-bg-base;
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      left: -250px;
+      width: 250px;
+      z-index: 98;
+      transition: left .3s linear;
+    }
+
+    @include con.mq('pc') {
+      visibility: visible;
+      flex-direction: row;
+      margin-left: 120px;
+    }
+  }
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    @include con.mq('pc') {
+      flex-direction: row;
+    } 
+  }
+
+  &__item {
+    font-size: 1.6rem;
+    font-weight: 800;
+
+    @include con.mq('pc-down') {
+      & + & {
+        margin-top: 50px;
+      }
+    }
+    @include con.mq('pc') {
+      & + & {
+        margin-left: 30px;
+      }
+    }
+  }
+
+  &__link {
+    color: c.$color-font-sub; 
+
+    ._open & {
+      color: c.$color-font-base; 
+    }
+  }
+
+  &__btn {
+    @include con.mq('pc-down') {
+      margin-top: 50px;
+    }
+
+    @include con.mq('pc') {
+      margin-left: auto;
+    }
+  }
+
+  &__overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: -105%;
+    z-index: 97;
+    background: c.$color-bg-sub;
+    opacity: .7;
+    width: 100%;
+    transition: right .4s linear;
+
+    //オーバーレイ開く
+    ._open & {
+      right: 0;
+    }
+  }
+}
+
+/* ハンバーガーアイコン */
+.hamburger {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80px;
+  height: 80px;
+  background: transparent;
+  cursor: pointer;
+  z-index: 99;
+  margin-left: 20px;
+  transition: transform .3s linear;
+
+  @include con.mq('pc') {
+    display: none;
+  }
+
+  &__line {
+    position: relative;
+    width: 40px;
+    height: 3px;
+    background: c.$color-font-base;
+
+    .-top & {
+      background: c.$color-font-sub;
+    }
+
+    &::before,&::after {
+      position: absolute;
+      content: "";
+      display: block;
+      width: 40px;
+      height: 3px;
+      background: c.$color-font-base;
+      transition: transform 0.9s;  //rotate
+
+      .-top & {
+        background: c.$color-font-sub;
+      }
+    }
+    &::before {
+      top: -13px;
+    }
+    &::after {
+      bottom: -13px;
+    }
+  }
+
+  //開く
+  ._open & {
+    position: absolute;
+
+    @include con.mq('pc-down') {
+      transform: translateX(380px);
+    }
+
+    @include con.mq('tab-down') {
+      transform: translateX(130px);
+    }
+
+    .hamburger__line {
+      background: transparent;
+    }
+    .hamburger__line::before {
+      background: c.$color-font-base;
+      top: 0;
+      transform: rotate(45deg);
+    }
+    .hamburger__line::after {
+      background: c.$color-font-base;
+      bottom: 0;
+      transform: rotate(-45deg);
+    }
+  }
+}

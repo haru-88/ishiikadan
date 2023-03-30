@@ -1,0 +1,178 @@
+@use "../setting/color" as c;
+@use "../setting/config" as con;
+
+/*===============================================
+subPage-common (rooms/dining/onsen)
+===============================================*/
+.subPage-top {
+  height: 500px;
+  display: grid;
+  place-items: center;
+  margin-top: 80px;
+
+  &__title {
+    font-size: 3.4rem;
+    font-weight: 800;
+    color: c.$color-font-sub;
+  }
+}
+
+.breadcrumb {
+  padding-top: 37px;
+
+  &__list {
+    display: flex;
+  }
+  
+  &__item {
+    font-size: 1.6rem;
+
+    &:not(:last-of-type)::after {
+      content:" > ";
+      color: c.$color-font-base;
+      margin: 0 .28em;
+    }
+  }
+}
+
+.subPage {
+  &__content {
+    padding-bottom: 80px;
+
+    @include con.mq('tab') {
+      padding-bottom: 207px;
+    }
+  }
+
+  &__lead {
+    font-size: 1.6rem;
+    line-height: 2;
+    text-align: center;
+    margin-top: 89px;
+  }
+
+  &__container {
+    margin-top: 70px;
+  }
+
+  &-alternate {
+    display: flex;
+    flex-direction: column-reverse;
+
+    @include con.mq('tab') {
+      flex-direction: row-reverse;
+    }
+
+    &+& {
+      margin-top: 80px;
+
+      @include con.mq('tab') {
+        margin-top: 140px;
+      }
+    }
+
+    &._reverse {
+      flex-direction: column-reverse;
+
+      @include con.mq('tab') {
+        flex-direction: row;
+      }
+    }
+
+    &__body {
+      background-image: url(../img/bg@2x.png);
+      // aspect-ratio: 813/381;
+    }
+
+    @include con.mq('tab-down') {
+      &__body {
+        margin-top: -55px;
+        padding-top: 70px;
+      }
+
+      &._normal {
+        .subPage-alternate__body {
+          padding: 88px 24px 64px;
+          margin-left: -20px;
+        }
+
+        .subPage-alternate__thumb {
+          margin-right: -20px;
+        }
+      }
+
+      &._reverse {
+        .subPage-alternate__body {
+          padding: 88px 24px 64px;
+          margin-right: -20px;
+        }
+
+        .subPage-alternate__thumb {
+          margin-left: -20px;
+        }
+      }
+    }
+
+    @include con.mq('tab') {
+      &__body {
+        aspect-ratio: 813/381;
+        width: calc(55.5% + 160px);
+        position: relative;
+        top: 55px;
+      }
+
+      &._normal {
+        .subPage-alternate__body {
+          padding: 58px 32px 58px 180px;
+          margin-left: -160px;
+        }
+      }
+      &._reverse {
+        .subPage-alternate__body {
+          padding: 58px 180px 58px 32px;
+          margin-right: -160px;
+        }
+      }
+    }
+
+    @include con.mq('pc') {
+      &._normal {
+        .subPage-alternate__body {
+          padding: 58px 63px 58px 240px;
+        }
+      }
+      &._reverse {
+        .subPage-alternate__body {
+          padding: 58px 275px 58px 60px;
+        }
+      }
+    }
+
+    &__title {
+      font-size: 2.4rem;
+      line-height: 1.3;
+    }
+  
+    &__text {
+      font-size: 1.6rem;
+      line-height: 2;
+      margin-top: 42px;
+    }
+  
+    &__thumb {
+      z-index: 1;
+  
+      @include con.mq('tab') {
+        width: 44.5%;
+      }
+  
+      img {
+        object-fit: cover;
+  
+        @include con.mq('tab') {
+          aspect-ratio: 525/300;
+        }
+      }
+    }
+  }
+}

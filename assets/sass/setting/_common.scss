@@ -1,0 +1,131 @@
+
+@use "./color" as c;
+@use "./config" as con;
+/* ==================================
+common
+===================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: “游明朝”, “Yu Mincho”, “游明朝体”, “YuMincho”, “Times New Roman”,“ヒラギノ明朝 Pro W3”, “Hiragino Mincho Pro”, “HiraMinProN-W3”, “HGS明朝E”, “ＭＳ Ｐ明朝”, “MS PMincho”, serif;
+  background: c.$color-bg-base;
+  color: c.$color-font-base;
+  font-weight: 500;
+}
+
+body.no_scroll{
+  overflow: hidden;
+}
+
+a {
+  color: c.$color-font-base;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover,
+  &:focus {
+    opacity: .7;
+  }
+  &:focus {
+    outline: none;
+  }
+}
+
+.inner {
+  max-width: 1920px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include con.mq('pc') {
+    padding: 0;
+  }
+}
+
+.section-inner {
+  max-width: 1180px;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  @include con.mq('pc-up') {
+    padding: 0;
+  }
+}
+
+.util-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  &__logo {
+    width: 40px;
+    height: 40px;
+    margin-bottom: 23px;
+  }
+
+  &__main {
+    font-size: 3.3rem;
+
+    @include con.mq('tab') {
+      font-size: 3.6rem;
+    }
+  }
+}
+
+.btn {
+  appearance: none;
+  display: inline-block;
+  width: 100%;
+  font-weight: 800;
+  text-align: center;
+  font-size: 1.6rem;
+  line-height: 1;
+  transition: opacity .3s;
+  cursor: pointer;
+
+  &:hover,
+  &:focus {
+    opacity: .7;
+  }
+}
+
+.btn--book {
+  background-color: c.$color-accent;
+  color: c.$color-font-sub;
+  font-weight: 800;
+  padding: 1em 2.3em;
+
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 22px;
+    height: 22px;
+    background-image: url(../img/calender.svg);
+    background-size: contain;
+    vertical-align: middle;
+    margin-right: 10px;
+  }
+}
+
+.btn-border {
+  border: 1px solid c.$color-border-base;
+  background: c.$color-bg-base;
+  width: 200px;
+  padding: 1.3em 0;
+  transition: .5s ease-out;
+
+  &:hover,
+  &:focus {
+    color: c.$color-font-sub;
+    background: c.$color-bg-sub;
+  }
+}
